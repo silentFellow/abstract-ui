@@ -1,1 +1,7 @@
-export const add = (a: number, b: number): number => a + b;
+import "@/index.css"
+
+import Button from "@/Button"
+
+export {
+  Button
+}
