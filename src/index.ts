@@ -1,7 +1,7 @@
-import "@/index.css"
+import "@/globals.css"
 
-import Button from "@/Button"
+import CustomButton from "@/CustomButton"
 
 export {
-  Button
+  CustomButton
 }

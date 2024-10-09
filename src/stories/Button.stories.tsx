@@ -1,10 +1,10 @@
-import { Button } from "../";
+import { CustomButton } from "../";
 
 export default {
   title: "Button",
-  component: Button
+  component: CustomButton
 }
 
 export const example = () => (
-  <Button name="he" />
+  <CustomButton name="he" />
 )
