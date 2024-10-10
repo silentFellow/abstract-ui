@@ -7,4 +7,11 @@ export default defineConfig({
   splitting: false,
   sourcemap: true,
   clean: true,
+  injectStyle: true,
+  publicDir: "public",
+  loader: {
+    ".svg": "dataurl",
+    ".png": "dataurl"
+  },
+  minify: "terser"
 });
