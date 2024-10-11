@@ -7,3 +7,5 @@ export * from "@/components/Actions/ContentCopy"
 
 export * from "@/components/Inputs/ExpandableTextarea"
 export * from "@/components/Inputs/DropDown"
+
+export * from "@/components/Forms/SignUpForm"
