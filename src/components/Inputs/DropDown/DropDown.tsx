@@ -54,7 +54,7 @@ const DropDown = ({
   };
 
   return (
-    <DropdownMenu>
+    <DropdownMenu onOpenChange={() => setFilter("")}>
       <DropdownMenuTrigger asChild className={style.button}>
         <Button variant="outline">
           {(radio && selected) ? selected : label}
@@ -67,6 +67,7 @@ const DropDown = ({
         {/* search */}
         {withSearch && (
           <Input
+            value={filter}
             type="text"
             placeholder={inputPlaceHolder}
             className={style.input}

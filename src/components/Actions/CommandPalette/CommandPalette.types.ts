@@ -17,7 +17,7 @@ export interface CommandPaletteProps {
     heading?: string;
     contents: {
       icon?: ReactNode;
-      label?: string;
+      label: string;
       onSelect: (...args: unknown[]) => void;
     }[];
   }[];
@@ -40,14 +40,14 @@ export type CommandPaletteOption = {
   */
   contents: {
     icon?: ReactNode;
-    label?: string;
+    label: string;
     onSelect: (...args: unknown[]) => void;
   }[];
 }
 
 export type CommandPaletteItem = {
   icon?: ReactNode;
-  label?: string;
+  label: string;
   onSelect: (...args: unknown[]) => void;
 }
 
