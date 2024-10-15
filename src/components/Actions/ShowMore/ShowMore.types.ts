@@ -4,7 +4,7 @@ export interface ShowMoreProps {
   */
   styles?: {
     line?: string;
-    button?: string
+    button?: string;
   };
   expanded?: boolean;
   onClick?: () => void;
@@ -13,4 +13,4 @@ export interface ShowMoreProps {
 export type ShowMoreStyle = {
   line?: string;
   button?: string;
-}
+};

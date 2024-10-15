@@ -10,6 +10,6 @@ export default defineConfig({
   injectStyle: true,
   minify: "terser",
   loader: {
-    ".svg": "dataurl"
-  }
+    ".svg": "dataurl",
+  },
 });

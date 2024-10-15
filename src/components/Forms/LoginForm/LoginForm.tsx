@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import { useState, useEffect } from "react";
 import { z } from "zod";
@@ -6,53 +6,59 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/components/ui/form";
 import { useForm } from "react-hook-form";
 import { getLoginValidation } from "./Login.validation";
-import { providersTOSvg } from "@/lib/constants"
+import { providersTOSvg } from "@/lib/constants";
 import { cn } from "@/lib/utils";
 import type { LoginProps, LoginStyles, LoginSocial } from "./LoginForm.types";
 
-const LoginForm = ({
-  styles,
-  authOptions
-}: LoginProps) => {
-  const [style, setStyle] = useState<LoginStyles>({})
+const LoginForm = ({ styles, authOptions }: LoginProps) => {
+  const [style, setStyle] = useState<LoginStyles>({});
   const validation = getLoginValidation(authOptions.withEmail || false);
 
   useEffect(() => {
     setStyle({
-      container: cn("p-6 bg-[#f5f5f5] dark:bg-[rgb(33,33,33)] w-[calc(100vw-3rem)] sm:w-[30rem] max-h-[39rem] overflow-auto rounded-xl shadow-xl", styles?.container || ""),
+      container: cn(
+        "p-6 bg-[#f5f5f5] dark:bg-[rgb(33,33,33)] w-[calc(100vw-3rem)] sm:w-[30rem] max-h-[39rem] overflow-auto rounded-xl shadow-xl",
+        styles?.container || "",
+      ),
       input: cn("no-focus", styles?.input || ""),
       button: cn("", styles?.button || ""),
       providerButton: {
         icon: cn("h-8 w-8", styles?.providerButton?.icon || ""),
         withText: cn(
           "flex-1 w-full center p-6 gap-3 bg-white hover:bg-white text-[rgb(33,33,33)] dark:bg-gray-700 dark:hover:bg-gray-700 dark:text-[#f5f5f5] hover:opacity-70",
-          styles?.providerButton?.withText || ""
+          styles?.providerButton?.withText || "",
         ),
         withoutText: cn(
           "w-fit h-fit rounded-full p-1 bg-white hover:bg-white dark:bg-gray-700 dark:hover:bg-gray-700 hover:opacity-70",
-          styles?.providerButton?.withoutText || ""
-        )
+          styles?.providerButton?.withoutText || "",
+        ),
       },
       text: cn("", styles?.text || ""),
       linkText: cn("text-[rgb(33,33,33)] dark:text-[#f5f5f5]", styles?.linkText || ""),
-      message: cn("text-red-500", styles?.message || "")
-    })
-
-  }, [styles])
+      message: cn("text-red-500", styles?.message || ""),
+    });
+  }, [styles]);
 
   const form = useForm({
     resolver: zodResolver(validation),
     defaultValues: {
       username: "",
-      password: ""
-    }
-  })
+      password: "",
+    },
+  });
 
-  if(!authOptions.credentialsState && authOptions.social?.length === 0) return null;
-  if(!authOptions.credentialsState) {
+  if (!authOptions.credentialsState && authOptions.social?.length === 0) return null;
+  if (!authOptions.credentialsState) {
     return (
       <section className={`${style.container} ${style.text}`}>
         <div className="full flex flex-col gap-2 overflow-y-auto">
@@ -67,15 +73,13 @@ const LoginForm = ({
                 alt={options.provider}
                 className={style.providerButton?.icon}
               />
-              <p className="text-sm font-bold capitalize">
-                {options.provider}
-              </p>
+              <p className="text-sm font-bold capitalize">{options.provider}</p>
             </Button>
           ))}
         </div>
       </section>
-    )
-  };
+    );
+  }
 
   const onSubmit = (values: z.infer<typeof validation>) => {
     if (authOptions.credentialsState) {
@@ -90,10 +94,7 @@ const LoginForm = ({
       <h3 className="font-extrabold uppercase my-3 text-center">Sign-in</h3>
 
       <Form {...form}>
-        <form
-          onSubmit={form.handleSubmit(onSubmit)}
-          className="flex flex-col justify-start gap-6"
-        >
+        <form onSubmit={form.handleSubmit(onSubmit)} className="flex flex-col justify-start gap-6">
           <FormField
             control={form.control}
             name="username"
@@ -101,13 +102,13 @@ const LoginForm = ({
               <FormItem className="flex flex-col w-full">
                 <FormLabel>Username</FormLabel>
                 <FormControl className={style.input}>
-                    <Input
-                      placeholder={
-                        authOptions.credentialsPlaceholder?.username ||
-                        (authOptions.withEmail ? "Enter username or email..." : "Enter username...")
-                      }
-                      {...field}
-                    />
+                  <Input
+                    placeholder={
+                      authOptions.credentialsPlaceholder?.username ||
+                      (authOptions.withEmail ? "Enter username or email..." : "Enter username...")
+                    }
+                    {...field}
+                  />
                 </FormControl>
                 <FormMessage className={style.message} />
               </FormItem>
@@ -122,7 +123,9 @@ const LoginForm = ({
                 <FormLabel>Password</FormLabel>
                 <FormControl className={style.input}>
                   <Input
-                    placeholder={authOptions.credentialsPlaceholder?.password || "Enter password..."}
+                    placeholder={
+                      authOptions.credentialsPlaceholder?.password || "Enter password..."
+                    }
                     {...field}
                   />
                 </FormControl>
@@ -146,10 +149,7 @@ const LoginForm = ({
               </div>
             )}
 
-            <Button
-              type="submit"
-              className={style.button}
-            >
+            <Button type="submit" className={style.button}>
               Login
             </Button>
           </div>
@@ -163,10 +163,10 @@ const LoginForm = ({
             asChild
             variant="link"
             onClick={() => {
-              if(authOptions.signupRedirect) {
+              if (authOptions.signupRedirect) {
                 window.location.href = authOptions.signupRedirect || "/sign-up";
               } else {
-                console.log("redirect to signup page not provided")
+                console.log("redirect to signup page not provided");
               }
             }}
           >
@@ -181,7 +181,7 @@ const LoginForm = ({
 
           <div className="full flex flex-col gap-2">
             {authOptions.social.length <= 5 ? (
-             <div className="full flex gap-2 flex-wrap">
+              <div className="full flex gap-2 flex-wrap">
                 {authOptions.social?.map((options: LoginSocial) => (
                   <Button
                     key={options.provider}
@@ -193,9 +193,7 @@ const LoginForm = ({
                       alt={options.provider}
                       className={style.providerButton?.icon}
                     />
-                    <p className="text-sm font-bold capitalize">
-                      {options.provider}
-                    </p>
+                    <p className="text-sm font-bold capitalize">{options.provider}</p>
                   </Button>
                 ))}
               </div>
@@ -219,9 +217,8 @@ const LoginForm = ({
           </div>
         </>
       )}
-
     </section>
-  )
-}
+  );
+};
 
 export default LoginForm;

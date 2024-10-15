@@ -19,4 +19,4 @@ export interface ExpandableTextAreaProps {
 export type ExpandableTextAreaStyles = {
   input?: string;
   charLimit?: string;
-}
+};

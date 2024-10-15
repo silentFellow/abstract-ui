@@ -13,7 +13,7 @@ export const DropDownSearch = () => {
 
   return (
     <DropDown
-      onChange={(val) => setVal(val as string[])}
+      onChange={val => setVal(val as string[])}
       options={[
         {
           label: "google",
@@ -35,7 +35,7 @@ export const DropDownWithoutSearch = () => {
   return (
     <DropDown
       withSearch={false}
-      onChange={(val) => setVal(val as string[])}
+      onChange={val => setVal(val as string[])}
       options={[
         {
           label: "google",
@@ -58,7 +58,7 @@ export const DropDownAsRadio = () => {
     <div>
       <DropDown
         radio
-        onChange={(val) => setVal(val as string)}
+        onChange={val => setVal(val as string)}
         options={[
           {
             label: "google",

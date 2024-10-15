@@ -26,8 +26,7 @@ const renderDropdownMenuItems = (
   activeStyle: string,
 ) => {
   return Object.keys(value).map((item, index) => {
-    if (value[item] === undefined || typeof value[item] === "boolean")
-      return null;
+    if (value[item] === undefined || typeof value[item] === "boolean") return null;
 
     const dropDownIsLast = index === Object.keys(value).length - 1;
 
@@ -36,10 +35,7 @@ const renderDropdownMenuItems = (
         {isLast && dropDownIsLast ? (
           <BreadcrumbPage className={activeStyle}>{item}</BreadcrumbPage>
         ) : (
-          <BreadcrumbLink
-            className="full"
-            href={value[item]}
-          >
+          <BreadcrumbLink className="full" href={value[item]}>
             {item}
           </BreadcrumbLink>
         )}
@@ -95,21 +91,15 @@ const Breadcrumbs = ({ styles, separator, path }: BreadcrumbsProps) => {
                       {renderDropdownMenuItems(value, isLast, style.active)}
                     </DropdownMenuContent>
                   </DropdownMenu>
+                ) : isLast ? (
+                  <BreadcrumbPage className={style.active}>{key}</BreadcrumbPage>
                 ) : (
-                  isLast ? (
-                    <BreadcrumbPage className={style.active}>
-                      {key}
-                    </BreadcrumbPage>
-                  ) : (
-                    <BreadcrumbLink href={value} className="focus:outline-none">
-                      {key}
-                    </BreadcrumbLink>
-                  )
+                  <BreadcrumbLink href={value} className="focus:outline-none">
+                    {key}
+                  </BreadcrumbLink>
                 )}
               </BreadcrumbItem>
-              {!isLast && (
-                <BreadcrumbSeparator>{separator}</BreadcrumbSeparator>
-              )}
+              {!isLast && <BreadcrumbSeparator>{separator}</BreadcrumbSeparator>}
             </React.Fragment>
           );
         })}

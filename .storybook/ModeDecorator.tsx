@@ -1,6 +1,6 @@
 // .storybook/modeDecorator.tsx
 import React from "react";
-import ThemeSwitcher from "../src/components/Actions/ThemeSwitcher/ThemeSwitcher"
+import ThemeSwitcher from "../src/components/Actions/ThemeSwitcher/ThemeSwitcher";
 
 export const ModeDecorator = (Story: any) => {
   return (

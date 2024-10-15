@@ -12,11 +12,20 @@ const ContentCopy = ({ styles, content, heading }: ContentCopyProps) => {
 
   useEffect(() => {
     setStyle({
-      content: cn("whitespace-pre-wrap break-keep text-justify font-mono px-6", styles?.content || ""),
-      button: cn("cursor-pointer shadow-xl text-[rgb(33,33,33)] dark:text-[#f5f5f5] bg-transparent hover:bg-transparent hover:opacity-50", styles?.button || ""),
-      container: cn("full flex flex-col gap-3 bg-[#f5f5f5] dark:bg-[rgb(33,33,33)] shadow-xl p-2 rounded-lg overflow-hidden", styles?.container || ""),
+      content: cn(
+        "whitespace-pre-wrap break-keep text-justify font-mono px-6",
+        styles?.content || "",
+      ),
+      button: cn(
+        "cursor-pointer shadow-xl text-[rgb(33,33,33)] dark:text-[#f5f5f5] bg-transparent hover:bg-transparent hover:opacity-50",
+        styles?.button || "",
+      ),
+      container: cn(
+        "full flex flex-col gap-3 bg-[#f5f5f5] dark:bg-[rgb(33,33,33)] shadow-xl p-2 rounded-lg overflow-hidden",
+        styles?.container || "",
+      ),
       seperator: cn("h-px w-full bg-gray-400 dark:bg-gray-800 shadow-xl", styles?.seperator || ""),
-      heading: cn("p-2 px-6 font-bold", styles?.heading || "")
+      heading: cn("p-2 px-6 font-bold", styles?.heading || ""),
     });
   }, [styles]);
 
@@ -34,17 +43,9 @@ const ContentCopy = ({ styles, content, heading }: ContentCopyProps) => {
   return (
     <section className={style.container}>
       <div className={`${heading ? "justify-between" : "justify-end"} "w-full flex items-center"`}>
-        {heading && (
-          <h2 className={style.heading}>
-            {heading}
-          </h2>
-        )}
+        {heading && <h2 className={style.heading}>{heading}</h2>}
 
-        <Button
-          className={style.button}
-          disabled={copied}
-          onClick={handleClick}
-        >
+        <Button className={style.button} disabled={copied} onClick={handleClick}>
           {!copied ? (
             <div className="flex gap-2 items-center uppercase font-bold">
               <ClipboardCopyIcon />
@@ -61,9 +62,7 @@ const ContentCopy = ({ styles, content, heading }: ContentCopyProps) => {
 
       <hr className={style.seperator} />
 
-      <pre className={style.content}>
-        {content}
-      </pre>
+      <pre className={style.content}>{content}</pre>
     </section>
   );
 };

@@ -1,9 +1,9 @@
-import CommandPalette from './CommandPalette';
-import { CommandPaletteOption, CommandPaletteStyles } from './CommandPalette.types';
-import { MagnifyingGlassIcon, FileIcon, GitHubLogoIcon } from '@radix-ui/react-icons';
+import CommandPalette from "./CommandPalette";
+import { CommandPaletteOption, CommandPaletteStyles } from "./CommandPalette.types";
+import { MagnifyingGlassIcon, FileIcon, GitHubLogoIcon } from "@radix-ui/react-icons";
 
 export default {
-  title: 'Command Palette',
+  title: "Command Palette",
   component: CommandPalette,
 };
 
@@ -12,12 +12,12 @@ const options: CommandPaletteOption[] = [
     heading: "File",
     contents: [
       {
-        icon: <FileIcon className='h-4 w-4 mr-2' />,
+        icon: <FileIcon className="h-4 w-4 mr-2" />,
         label: "New File",
         onSelect: () => console.log("New File"),
       },
       {
-        icon: <GitHubLogoIcon className='h-4 w-4 mr-2' />,
+        icon: <GitHubLogoIcon className="h-4 w-4 mr-2" />,
         label: "Save File",
         onSelect: () => console.log("Save File"),
       },
@@ -47,7 +47,7 @@ export const BasicExample = () => (
       options={options}
       triggerKeys={{
         leaders: ["metaKey", "ctrlKey"],
-        keys: ["p"]
+        keys: ["p"],
       }}
     />
   </div>
@@ -60,7 +60,7 @@ export const WithCustomStyles = () => (
       styles={customStyles}
       triggerKeys={{
         leaders: ["metaKey", "ctrlKey"],
-        keys: ["p"]
+        keys: ["p"],
       }}
     />
   </div>
@@ -79,7 +79,7 @@ export const WithDifferentTriggerKeys = () => (
       show={false}
       triggerKeys={{
         leaders: ["ctrlKey"],
-        keys: ["j"]
+        keys: ["j"],
       }}
     />
   </div>
@@ -92,7 +92,7 @@ export const WithMultipleGroups = () => {
       heading: "View",
       contents: [
         {
-          icon: <MagnifyingGlassIcon className='h-4 w-4 mr-2' />,
+          icon: <MagnifyingGlassIcon className="h-4 w-4 mr-2" />,
           label: "Toggle Sidebar",
           onSelect: () => console.log("Toggle Sidebar"),
         },
@@ -106,7 +106,7 @@ export const WithMultipleGroups = () => {
         options={multipleGroupsOptions}
         triggerKeys={{
           leaders: ["metaKey", "ctrlKey"],
-          keys: ["p"]
+          keys: ["p"],
         }}
       />
     </div>

@@ -20,4 +20,4 @@ export type ImageInputStyles = {
   input?: string;
   image?: string;
   imageContainer?: string;
-}
+};

@@ -1,8 +1,4 @@
-import SignUpForm from './SignUpForm';
-import { SignUpStyles, SignUpProps } from './SignUpForm.types';
+import SignUpForm from "./SignUpForm";
+import { SignUpStyles, SignUpProps } from "./SignUpForm.types";
 
-export {
-  SignUpForm,
-  SignUpProps,
-  SignUpStyles
-}
+export { SignUpForm, SignUpProps, SignUpStyles };

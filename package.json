@@ -23,6 +23,9 @@
     "build-storybook": "storybook build",
     "build": "tsup"
   },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx,json,css,scss,md}": "prettier --write ."
+  },
   "keywords": [
     "react",
     "nextjs",
@@ -72,7 +75,9 @@
     "eslint-plugin-storybook": "^0.9.0",
     "globals": "^15.11.0",
     "husky": "^9.1.6",
+    "lint-staged": "^15.2.10",
     "postcss": "^8.4.47",
+    "prettier": "^3.3.3",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-hook-form": "^7.53.0",

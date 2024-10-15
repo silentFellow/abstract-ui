@@ -1,15 +1,15 @@
-import { useState } from 'react';
+import { useState } from "react";
 
-import LoginForm from './LoginForm';
+import LoginForm from "./LoginForm";
 
 export default {
-  title: 'Login Form',
+  title: "Login Form",
   component: LoginForm,
-}
+};
 
 export const LoginFormWithCredentials = () => {
-  const [val, setVal] = useState({})
-  console.log(val)
+  const [val, setVal] = useState({});
+  console.log(val);
 
   return (
     <LoginForm
@@ -42,7 +42,7 @@ export const LoginFormWithCredentials = () => {
           {
             provider: "gitlab",
             trigger: () => console.log("gitlab"),
-          }
+          },
         ],
       }}
     />
@@ -68,7 +68,7 @@ export const LoginFormWithoutCredentials = () => {
           {
             provider: "instagram",
             trigger: () => console.log("facebook"),
-          }
+          },
         ],
       }}
     />
@@ -76,8 +76,8 @@ export const LoginFormWithoutCredentials = () => {
 };
 
 export const LoginFormWithoutProviders = () => {
-  const [val, setVal] = useState({})
-  console.log(val)
+  const [val, setVal] = useState({});
+  console.log(val);
 
   return (
     <LoginForm
@@ -92,8 +92,8 @@ export const LoginFormWithoutProviders = () => {
 };
 
 export const LoginFormWithoutSignup = () => {
-  const [val, setVal] = useState({})
-  console.log(val)
+  const [val, setVal] = useState({});
+  console.log(val);
 
   return (
     <LoginForm
@@ -107,8 +107,8 @@ export const LoginFormWithoutSignup = () => {
 };
 
 export const LoginFormWithoutForgetPassword = () => {
-  const [val, setVal] = useState({})
-  console.log(val)
+  const [val, setVal] = useState({});
+  console.log(val);
 
   return (
     <LoginForm
@@ -122,8 +122,8 @@ export const LoginFormWithoutForgetPassword = () => {
 };
 
 export const LoginFormWithoutEmail = () => {
-  const [val, setVal] = useState({})
-  console.log(val)
+  const [val, setVal] = useState({});
+  console.log(val);
 
   return (
     <LoginForm

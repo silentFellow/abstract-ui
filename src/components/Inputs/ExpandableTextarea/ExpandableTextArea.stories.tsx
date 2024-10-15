@@ -1,7 +1,7 @@
-import ExpandableTextArea from './ExpandableTextArea';
+import ExpandableTextArea from "./ExpandableTextArea";
 
 export default {
-  title: 'Expandable Text Area',
+  title: "Expandable Text Area",
   component: ExpandableTextArea,
 };
 

@@ -12,10 +12,7 @@ export const ShowMoreExample = () => {
 
   return (
     <div className="w-96">
-      <ShowMore
-        expanded={val}
-        onClick={() => setVal(!val)}
-      />
+      <ShowMore expanded={val} onClick={() => setVal(!val)} />
     </div>
   );
 };

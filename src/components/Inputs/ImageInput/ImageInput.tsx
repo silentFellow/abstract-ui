@@ -8,16 +8,7 @@ import { Profile } from "@/assets";
 import { Label } from "@/components/ui/label";
 
 const ImageInput = forwardRef<HTMLInputElement, ImageInputProps>(
-  (
-    {
-      styles,
-      defaultImage = Profile,
-      showInput = false,
-      onChange,
-      ...props
-    },
-    ref,
-  ) => {
+  ({ styles, defaultImage = Profile, showInput = false, onChange, ...props }, ref) => {
     const [style, setStyle] = useState<ImageInputStyles>({});
     const [image, setImage] = useState<string>("");
 
@@ -46,7 +37,7 @@ const ImageInput = forwardRef<HTMLInputElement, ImageInputProps>(
 
         if (!file.type.includes("image")) return;
 
-        fileReader.onload = async (event) => {
+        fileReader.onload = async event => {
           const imageUrl = event.target?.result?.toString() || "";
           setImage(imageUrl);
 
@@ -60,11 +51,7 @@ const ImageInput = forwardRef<HTMLInputElement, ImageInputProps>(
     return (
       <section className={style.container}>
         <Label className={style.imageContainer} htmlFor="imageUpload">
-          <img
-            src={image || defaultImage}
-            alt="image"
-            className={style.image}
-          />
+          <img src={image || defaultImage} alt="image" className={style.image} />
         </Label>
 
         <Input

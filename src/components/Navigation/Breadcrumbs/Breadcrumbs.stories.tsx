@@ -9,8 +9,8 @@ export const BasicExample = () => {
   return (
     <Breadcrumbs
       path={{
-        "Home": "/",
-        "Page": "/page"
+        Home: "/",
+        Page: "/page",
       }}
     />
   );
@@ -20,13 +20,13 @@ export const WithDropdown = () => {
   return (
     <Breadcrumbs
       path={{
-        "Home": "/",
-        "Section": {
+        Home: "/",
+        Section: {
           showHeader: true,
-          "Subpage1": "/section/subpage1",
-          "Subpage2": "/section/subpage2",
+          Subpage1: "/section/subpage1",
+          Subpage2: "/section/subpage2",
         },
-        "Page": "/page",
+        Page: "/page",
       }}
     />
   );
@@ -37,8 +37,8 @@ export const CustomSeparator = () => {
     <Breadcrumbs
       separator=">>"
       path={{
-        "Home": "/",
-        "Page": "/page"
+        Home: "/",
+        Page: "/page",
       }}
     />
   );
@@ -53,12 +53,12 @@ export const CustomStyles = () => {
         dropdown: "",
       }}
       path={{
-        "Home": "/",
-        "Page": "/page",
-        "sub": {
-          "hi": "/hello",
-          "hello": "/hello"
-        }
+        Home: "/",
+        Page: "/page",
+        sub: {
+          hi: "/hello",
+          hello: "/hello",
+        },
       }}
     />
   );

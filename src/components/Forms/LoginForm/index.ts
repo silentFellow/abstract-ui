@@ -7,11 +7,4 @@ import {
   LoginSocial,
 } from "./LoginForm.types";
 
-export {
-  LoginForm,
-  LoginProvider,
-  LoginStyles,
-  LoginAuthOptions,
-  LoginProps,
-  LoginSocial
-}
+export { LoginForm, LoginProvider, LoginStyles, LoginAuthOptions, LoginProps, LoginSocial };

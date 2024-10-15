@@ -7,24 +7,24 @@ import { DesktopIcon, MoonIcon, SunIcon } from "@radix-ui/react-icons";
 const ThemeSwitcher = ({
   defaultTheme = "light",
   showSystem = false,
-  styles
+  styles,
 }: ThemeSwitcherProps) => {
   const [style, setStyle] = useState<ThemeSwitcherStyles>({});
 
   const getSystemTheme = () => {
-    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-      return 'dark';
-    } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) {
-      return 'light';
+    if (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches) {
+      return "dark";
+    } else if (window.matchMedia && window.matchMedia("(prefers-color-scheme: light)").matches) {
+      return "light";
     } else {
-      return 'system';
+      return "system";
     }
-  }
+  };
 
   const [theme, setTheme] = useState<"light" | "dark" | "system">(() => {
     const savedTheme = localStorage.getItem("prefers-color-theme");
     if (savedTheme) return savedTheme as "light" | "dark" | "system";
-    if(defaultTheme === "system") return getSystemTheme();
+    if (defaultTheme === "system") return getSystemTheme();
     return defaultTheme;
   });
 
@@ -46,7 +46,7 @@ const ThemeSwitcher = ({
       container: cn("", styles?.container || ""),
       tabs: cn("border w-fit h-fit", styles?.container || ""),
       button: cn("", styles?.button),
-      icons: cn("h-[1.2rem] w-[1.2rem]", styles?.icons)
+      icons: cn("h-[1.2rem] w-[1.2rem]", styles?.icons),
     });
   }, [styles]);
 
@@ -57,7 +57,7 @@ const ThemeSwitcher = ({
           <SunIcon className={style.icons} />
         </TabsTrigger>
         <TabsTrigger value="dark" onClick={() => setTheme("dark")} className={style.button}>
-          <MoonIcon className={ `${style.icons} rotate-90 transition-all dark:rotate-0` } />
+          <MoonIcon className={`${style.icons} rotate-90 transition-all dark:rotate-0`} />
         </TabsTrigger>
 
         {showSystem && (
@@ -68,6 +68,6 @@ const ThemeSwitcher = ({
       </TabsList>
     </Tabs>
   );
-}
+};
 
 export default ThemeSwitcher;

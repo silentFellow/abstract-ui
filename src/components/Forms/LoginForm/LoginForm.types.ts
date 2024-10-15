@@ -17,7 +17,7 @@ export interface LoginProps {
     text?: string;
     linkText?: string;
     message?: string;
-  }
+  };
 
   /**
     -- This is of type LoginAuthOptions
@@ -30,7 +30,7 @@ export interface LoginProps {
     credentialsPlaceholder?: {
       username?: string;
       password?: string;
-    }
+    };
 
     /**
       -- This is of type Social[]
@@ -39,13 +39,55 @@ export interface LoginProps {
       /**
         -- This is of type LoginProvider
       */
-      provider: "apple" | "azure" | "discord" | "dribbble" | "dropbox" | "facebook" | "github" | "gitlab" | "google" | "instagram" | "line" | "linkedin" | "notion" | "pinterest" | "reddit" | "spotify" | "twitch" | "twitter" | "wordpress" | "zoho" | "zoom";
+      provider:
+        | "apple"
+        | "azure"
+        | "discord"
+        | "dribbble"
+        | "dropbox"
+        | "facebook"
+        | "github"
+        | "gitlab"
+        | "google"
+        | "instagram"
+        | "line"
+        | "linkedin"
+        | "notion"
+        | "pinterest"
+        | "reddit"
+        | "spotify"
+        | "twitch"
+        | "twitter"
+        | "wordpress"
+        | "zoho"
+        | "zoom";
       trigger: (...args: unknown[]) => void;
     }[];
   };
 }
 
-export type LoginProvider = "apple" | "azure" | "discord" | "dribbble" | "dropbox" | "facebook" | "github" | "gitlab" | "google" | "instagram" | "line" | "linkedin" | "notion" | "pinterest" | "reddit" | "spotify" | "twitch" | "twitter" | "wordpress" | "zoho" | "zoom";
+export type LoginProvider =
+  | "apple"
+  | "azure"
+  | "discord"
+  | "dribbble"
+  | "dropbox"
+  | "facebook"
+  | "github"
+  | "gitlab"
+  | "google"
+  | "instagram"
+  | "line"
+  | "linkedin"
+  | "notion"
+  | "pinterest"
+  | "reddit"
+  | "spotify"
+  | "twitch"
+  | "twitter"
+  | "wordpress"
+  | "zoho"
+  | "zoom";
 
 export type LoginAuthOptions = {
   withEmail?: boolean;
@@ -55,7 +97,7 @@ export type LoginAuthOptions = {
   credentialsPlaceholder?: {
     username?: string;
     password?: string;
-  }
+  };
 
   /**
     -- This is of type Social[]
@@ -64,10 +106,31 @@ export type LoginAuthOptions = {
     /**
       -- This is of type LoginProvider
     */
-    provider: "apple" | "azure" | "discord" | "dribbble" | "dropbox" | "facebook" | "github" | "gitlab" | "google" | "instagram" | "line" | "linkedin" | "notion" | "pinterest" | "reddit" | "spotify" | "twitch" | "twitter" | "wordpress" | "zoho" | "zoom";
+    provider:
+      | "apple"
+      | "azure"
+      | "discord"
+      | "dribbble"
+      | "dropbox"
+      | "facebook"
+      | "github"
+      | "gitlab"
+      | "google"
+      | "instagram"
+      | "line"
+      | "linkedin"
+      | "notion"
+      | "pinterest"
+      | "reddit"
+      | "spotify"
+      | "twitch"
+      | "twitter"
+      | "wordpress"
+      | "zoho"
+      | "zoom";
     trigger: (...args: unknown[]) => void;
   }[];
-}
+};
 
 // text prop is just generic not change on everywhere
 // use at top level some may override it
@@ -83,9 +146,9 @@ export type LoginStyles = {
   text?: string;
   linkText?: string;
   message?: string;
-}
+};
 
 export type LoginSocial = {
   provider: LoginProvider;
   trigger: (...args: unknown[]) => void;
-}
+};

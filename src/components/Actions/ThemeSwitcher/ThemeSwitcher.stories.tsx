@@ -6,13 +6,9 @@ export default {
 };
 
 export const ThemeSwitcherWithSystem = () => {
-  return (
-    <ThemeSwitcher showSystem />
-  )
+  return <ThemeSwitcher showSystem />;
 };
 
 export const ThemeSwitcherWithoutSystem = () => {
-  return (
-    <ThemeSwitcher />
-  )
+  return <ThemeSwitcher />;
 };

@@ -1,6 +1,6 @@
 import type { Preview } from "@storybook/react";
 import { ModeDecorator } from "./ModeDecorator";
-import "@/index.css"
+import "@/index.css";
 
 const preview: Preview = {
   decorators: [ModeDecorator],

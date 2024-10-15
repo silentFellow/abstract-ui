@@ -18,4 +18,4 @@ export type ThemeSwitcherStyles = {
   tabs?: string;
   button?: string;
   icons?: string;
-}
+};

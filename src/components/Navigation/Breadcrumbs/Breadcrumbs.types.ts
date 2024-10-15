@@ -11,10 +11,12 @@ export type BreadcrumbsProps = {
   separator?: React.ReactNode;
 
   path: {
-    [key: string]: string | {
-      showHeader?: boolean;
-      [key: string]: string | boolean | undefined;
-    };
+    [key: string]:
+      | string
+      | {
+          showHeader?: boolean;
+          [key: string]: string | boolean | undefined;
+        };
   };
 };
 

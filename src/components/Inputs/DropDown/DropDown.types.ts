@@ -22,9 +22,9 @@ export type DropDownStyles = {
   input?: string;
   text?: string;
   noResult?: string;
-}
+};
 
 export type DropDownOptions = {
   label: string;
   value: string;
-}
+};

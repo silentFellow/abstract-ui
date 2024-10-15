@@ -8,7 +8,7 @@ export interface ContentCopyProps {
     container?: string;
     seperator?: string;
     heading?: string;
-  },
+  };
   heading?: string;
   content: string;
 }
@@ -19,4 +19,4 @@ export type ContentCopyStyles = {
   container?: string;
   seperator?: string;
   heading?: string;
-}
+};

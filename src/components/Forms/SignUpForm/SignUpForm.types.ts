@@ -7,7 +7,7 @@ export interface SignUpProps {
     password?: string;
     confirmPassword?: string;
     email?: string;
-  }
+  };
 
   /**
     -- This is of type SignUpStyles
@@ -29,4 +29,4 @@ export type SignUpStyles = {
   text?: string;
   linkText?: string;
   message?: string;
-}
+};

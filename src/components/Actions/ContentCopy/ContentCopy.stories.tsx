@@ -1,23 +1,18 @@
-import ContentCopy from './ContentCopy';
+import ContentCopy from "./ContentCopy";
 
 export default {
-  title: 'Content copy',
+  title: "Content copy",
   component: ContentCopy,
-}
+};
 
 export const ContentCopyWithHeading = () => {
   const multiLineString = `
 <ContentCopy
   content={multiLineString}
 />
-  `
+  `;
 
-  return (
-    <ContentCopy
-      heading='Multi-line string'
-      content={multiLineString}
-    />
-  );
+  return <ContentCopy heading="Multi-line string" content={multiLineString} />;
 };
 
 export const ContentCopyWithoutHeading = () => {
@@ -25,13 +20,9 @@ export const ContentCopyWithoutHeading = () => {
 <ContentCopy
   content={multiLineString}
 />
-  `
+  `;
 
-  return (
-    <ContentCopy
-      content={multiLineString}
-    />
-  );
+  return <ContentCopy content={multiLineString} />;
 };
 
 export const ContentCopyWithCustomStyles = () => {
@@ -50,10 +41,6 @@ export const ContentCopyWithCustomStyles = () => {
   };
 
   return (
-    <ContentCopy
-      heading="Multi-line string"
-      content={multiLineString}
-      styles={customStyles}
-    />
+    <ContentCopy heading="Multi-line string" content={multiLineString} styles={customStyles} />
   );
 };

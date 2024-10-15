@@ -43,16 +43,16 @@ export type CommandPaletteOption = {
     label: string;
     onSelect: (...args: unknown[]) => void;
   }[];
-}
+};
 
 export type CommandPaletteItem = {
   icon?: ReactNode;
   label: string;
   onSelect: (...args: unknown[]) => void;
-}
+};
 
 export type CommandPaletteStyles = {
   input?: string;
   options?: string; // to modify style of currently selected use data-[selected=true]: pseudo class
   heading?: string;
-}
+};

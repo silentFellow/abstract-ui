@@ -1,5 +1,3 @@
 import { providersTOSvg } from "./LoginForm.constants";
 
-export {
-  providersTOSvg
-}
+export { providersTOSvg };
