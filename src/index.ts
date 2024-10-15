@@ -23,6 +23,8 @@ export * from "@/components/Inputs/DropDown";
 export * from "@/components/Forms/SignUpForm";
 export * from "@/components/Forms/LoginForm";
 
+export * from "@/components/Navigation/Breadcrumbs";
+
 // Restore console methods
 console.log = originalConsoleLog;
 console.warn = originalConsoleWarn;
