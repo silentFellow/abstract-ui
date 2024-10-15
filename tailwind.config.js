@@ -1,3 +1,5 @@
+import tailwindcssAnimate from "tailwindcss-animate";
+
 /** @type {import('tailwindcss').Config} */
 export default {
   darkMode: ["selector"],
@@ -53,6 +55,5 @@ export default {
       },
     },
   },
-  plugins: [require("tailwindcss-animate")],
-  // prefix: "abstract-ui-"
+  plugins: [tailwindcssAnimate],
 };
