@@ -1,17 +1,24 @@
 export interface DropDownProps {
   label?: string;
-  styles?: DropDownStyles;
   withSearch?: boolean;
 
-  /**
-    -- This is of type Options[]
-  */
-  options: {
-    label: string;
-    value: string;
-  }[];
+  /** This is of type DropDownStyles */
+  styles?: {
+    button?: string;
+    dropdown?: string;
+    input?: string;
+    noResult?: string;
+    options?: string;
+  };
+
+  /** label: value */
+  options: { [label: string]: string };
+
+  /** def values */
+  value?: string[] | string;
 
   inputPlaceHolder?: string;
+  noResult?: string;
   radio?: boolean;
   onChange?: (value: string | string[]) => void;
 }
@@ -20,11 +27,6 @@ export type DropDownStyles = {
   button?: string;
   dropdown?: string;
   input?: string;
-  text?: string;
   noResult?: string;
-};
-
-export type DropDownOptions = {
-  label: string;
-  value: string;
+  options?: string;
 };

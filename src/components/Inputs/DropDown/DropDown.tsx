@@ -1,120 +1,137 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import { DropDownStyles, DropDownProps, DropDownOptions } from "./DropDown.types";
+import { useState, useMemo } from "react";
+import { DropDownProps } from "./DropDown.types";
 import { cn } from "@/lib/utils";
-import {
-  DropdownMenu,
-  DropdownMenuCheckboxItem,
-  DropdownMenuContent,
-  DropdownMenuRadioGroup,
-  DropdownMenuRadioItem,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
+import { ChevronUpIcon, ChevronDownIcon, CheckIcon, RadiobuttonIcon } from "@radix-ui/react-icons";
+import {
+  Command,
+  CommandEmpty,
+  CommandGroup,
+  CommandItem,
+  CommandList,
+} from "@/components/ui/command";
+import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
+import { Input } from "@/components/ui/input";
 
 const DropDown = ({
   label = "Select Items",
   styles,
   withSearch = true,
-  options = [],
+  options = {},
   radio = false,
   inputPlaceHolder = "search items...",
+  value = radio ? "" : [],
+  noResult = "No items found...",
   onChange,
 }: DropDownProps) => {
-  const [style, setStyle] = useState<DropDownStyles>({});
-
-  const [selected, setSelected] = useState<string[] | string>(() => {
-    return radio ? "" : [];
-  });
-
+  const [isOpen, setIsOpen] = useState<boolean>(false);
+  const [selected, setSelected] = useState<string[] | string>(value);
   const [filter, setFilter] = useState<string>("");
 
-  useEffect(() => {
-    setStyle({
-      button: cn(
-        "bg-[#f5f5f5] dark:bg-[rgb(33,33,33)] full rounded-md no-focus",
-        styles?.button || "",
-      ),
-      dropdown: cn(
-        "mt-1 w-64 flex flex-col px-3 bg-[#f5f5f5] dark:bg-[rgb(33,33,33)] shadow-xl",
-        styles?.dropdown || "",
-      ),
+  const style = useMemo(
+    () => ({
       input: cn("no-focus", styles?.input || ""),
-      text: cn("", styles?.text || ""),
+      button: cn("justify-between", styles?.button || ""),
+      dropdown: cn(
+        "w-64 flex flex-col shadow-xl",
+        styles?.dropdown
+          ?.replace("hover:", "data-[selected=true]")
+          .replace("focus:", "data-[selected=true]") || "",
+      ),
       noResult: cn("text-xs font-bold text-center p-3", styles?.noResult || ""),
-    });
-  }, [styles]);
-
-  const filteredOptions = options.filter((option: DropDownOptions) =>
-    option.label.includes(filter),
+      options: cn(
+        "",
+        styles?.options
+          ?.replace("hover:", "data-[selected=true]:")
+          .replace("focus:", "data-[selected=true]:"),
+      ),
+    }),
+    [styles],
   );
 
-  const handleChange = (value: string, checked: boolean) => {
+  const handleChange = (value: string): void => {
     let newValue: string | string[];
 
     if (radio) {
       newValue = selected === value ? "" : value;
     } else {
-      newValue = checked
+      newValue = !selected?.includes(value)
         ? [...(selected as string[]), value]
         : (selected as string[]).filter(v => v !== value);
     }
 
     setSelected(newValue);
-
-    // Ensure onChange is called with the correct type
     if (onChange) onChange(newValue);
   };
 
+  const filteredOptions = Object.keys(options).filter(key =>
+    key.toLowerCase().includes(filter.toLowerCase()),
+  );
+
   return (
-    <DropdownMenu onOpenChange={() => setFilter("")}>
-      <DropdownMenuTrigger asChild className={style.button}>
-        <Button variant="outline">{radio && selected ? selected : label}</Button>
-      </DropdownMenuTrigger>
+    <Popover open={isOpen} onOpenChange={setIsOpen}>
+      <PopoverTrigger asChild onClick={() => setFilter("")}>
+        <Button variant="outline" role="combobox" className={style.button}>
+          {label}
+          {isOpen ? (
+            <ChevronUpIcon className="ml-2 h-4 w-4 shrink-0 opacity-50" />
+          ) : (
+            <ChevronDownIcon className="ml-2 h-4 w-4 shrink-0 opacity-50" />
+          )}
+        </Button>
+      </PopoverTrigger>
+      <PopoverContent className="full p-0">
+        <Command className={style.dropdown}>
+          {withSearch && (
+            <Input
+              autoFocus
+              value={filter}
+              type="text"
+              placeholder={inputPlaceHolder}
+              className={style.input}
+              onChange={e => setFilter(e.target.value)}
+            />
+          )}
+          <CommandEmpty className={style.noResult}>{noResult}</CommandEmpty>
+          <CommandList>
+            <CommandGroup>
+              {filteredOptions.map((key: string) => {
+                const label = key;
+                const value = options[key];
 
-      <DropdownMenuContent className={style.dropdown}>
-        <DropdownMenuSeparator />
-
-        {/* search */}
-        {withSearch && (
-          <Input
-            value={filter}
-            type="text"
-            placeholder={inputPlaceHolder}
-            className={style.input}
-            onChange={e => setFilter(e.target.value)}
-          />
-        )}
-
-        {/* drop-down */}
-        {filteredOptions.length === 0 ? (
-          <p className={style.noResult}>No result found</p>
-        ) : (
-          filteredOptions.map((option: DropDownOptions) =>
-            !radio ? (
-              <DropdownMenuCheckboxItem
-                key={option.value}
-                checked={(selected as string[]).includes(option.value)}
-                onCheckedChange={checked => handleChange(option.value, checked)}
-              >
-                {option.label}
-              </DropdownMenuCheckboxItem>
-            ) : (
-              <DropdownMenuRadioGroup
-                key={option.value}
-                value={selected as string}
-                onValueChange={value => handleChange(value, true)}
-              >
-                <DropdownMenuRadioItem value={option.value}>{option.label}</DropdownMenuRadioItem>
-              </DropdownMenuRadioGroup>
-            ),
-          )
-        )}
-      </DropdownMenuContent>
-    </DropdownMenu>
+                return (
+                  <CommandItem
+                    key={label}
+                    value={label}
+                    onSelect={() => handleChange(value)}
+                    className={style.options}
+                  >
+                    {radio ? (
+                      <RadiobuttonIcon
+                        className={cn(
+                          "h-4 w-4 mr-2",
+                          selected?.includes(value) ? "opacity-100" : "opacity-0",
+                        )}
+                      />
+                    ) : (
+                      <CheckIcon
+                        className={cn(
+                          "h-4 w-4 mr-2",
+                          selected?.includes(value) ? "opacity-100" : "opacity-0",
+                        )}
+                      />
+                    )}
+                    <span className="text-sm">{label}</span>
+                  </CommandItem>
+                );
+              })}
+            </CommandGroup>
+          </CommandList>
+        </Command>
+      </PopoverContent>
+    </Popover>
   );
 };
 

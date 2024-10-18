@@ -14,16 +14,10 @@ export const DropDownSearch = () => {
   return (
     <DropDown
       onChange={val => setVal(val as string[])}
-      options={[
-        {
-          label: "google",
-          value: "google.com",
-        },
-        {
-          label: "github",
-          value: "github.com",
-        },
-      ]}
+      options={{
+        Google: "/google",
+        Github: "/github",
+      }}
     />
   );
 };
@@ -36,16 +30,11 @@ export const DropDownWithoutSearch = () => {
     <DropDown
       withSearch={false}
       onChange={val => setVal(val as string[])}
-      options={[
-        {
-          label: "google",
-          value: "google",
-        },
-        {
-          label: "github",
-          value: "github",
-        },
-      ]}
+      options={{
+        Google: "/google",
+        Github: "/github",
+      }}
+      value={["/google"]}
     />
   );
 };
@@ -59,20 +48,12 @@ export const DropDownAsRadio = () => {
       <DropDown
         radio
         onChange={val => setVal(val as string)}
-        options={[
-          {
-            label: "google",
-            value: "google",
-          },
-          {
-            label: "google",
-            value: "google",
-          },
-          {
-            label: "github",
-            value: "github",
-          },
-        ]}
+        options={{
+          Google: "/google",
+          Goagle: "/goagle",
+          Github: "/github",
+          Linkedin: "/kitty",
+        }}
       />
     </div>
   );
