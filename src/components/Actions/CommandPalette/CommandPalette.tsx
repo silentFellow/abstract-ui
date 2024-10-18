@@ -1,8 +1,8 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { cn } from "@/lib/utils";
-import { CommandPaletteProps, CommandPaletteStyles } from "./CommandPalette.types";
+import { CommandPaletteProps } from "./CommandPalette.types";
 import {
   Command,
   CommandDialog,
@@ -23,17 +23,16 @@ const CommandPalette = ({
     keys: [],
   },
 }: CommandPaletteProps) => {
-  const [style, setStyle] = useState<CommandPaletteStyles>({});
-
-  const [isOpen, setIsOpen] = useState<boolean>(false);
-
-  useEffect(() => {
-    setStyle({
+  const style = useMemo(
+    () => ({
       input: cn("", styles?.input || ""),
       heading: cn("", styles?.heading || ""),
       options: cn("", styles?.input || ""),
-    });
-  }, [styles]);
+    }),
+    [styles],
+  );
+
+  const [isOpen, setIsOpen] = useState<boolean>(false);
 
   useEffect(() => {
     if (triggerKeys.leaders.length === 0 || triggerKeys.keys.length === 0) return;

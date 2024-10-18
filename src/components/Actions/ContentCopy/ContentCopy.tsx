@@ -1,17 +1,16 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-import { useState, useEffect } from "react";
-import { ContentCopyProps, ContentCopyStyles } from "./ContentCopy.types";
+import { useState, useMemo } from "react";
+import { ContentCopyProps } from "./ContentCopy.types";
 import { CheckCircledIcon, ClipboardCopyIcon } from "@radix-ui/react-icons";
 import { Button } from "@/components/ui/button";
 
 const ContentCopy = ({ styles, content, heading }: ContentCopyProps) => {
-  const [style, setStyle] = useState<ContentCopyStyles>({});
   const [copied, setCopied] = useState<boolean>(false);
 
-  useEffect(() => {
-    setStyle({
+  const style = useMemo(
+    () => ({
       content: cn(
         "whitespace-pre-wrap break-keep text-justify font-mono px-6",
         styles?.content || "",
@@ -26,8 +25,9 @@ const ContentCopy = ({ styles, content, heading }: ContentCopyProps) => {
       ),
       seperator: cn("h-px w-full bg-gray-400 dark:bg-gray-800 shadow-xl", styles?.seperator || ""),
       heading: cn("p-2 px-6 font-bold", styles?.heading || ""),
-    });
-  }, [styles]);
+    }),
+    [styles],
+  );
 
   if (!content) return null;
 

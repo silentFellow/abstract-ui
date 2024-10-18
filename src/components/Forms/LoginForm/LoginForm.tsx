@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useMemo } from "react";
 import { z } from "zod";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -18,14 +18,13 @@ import { useForm } from "react-hook-form";
 import { getLoginValidation } from "./Login.validation";
 import { providersTOSvg } from "@/lib/constants";
 import { cn } from "@/lib/utils";
-import type { LoginProps, LoginStyles, LoginSocial } from "./LoginForm.types";
+import type { LoginProps, LoginSocial } from "./LoginForm.types";
 
 const LoginForm = ({ styles, authOptions }: LoginProps) => {
-  const [style, setStyle] = useState<LoginStyles>({});
   const validation = getLoginValidation(authOptions.withEmail || false);
 
-  useEffect(() => {
-    setStyle({
+  const style = useMemo(
+    () => ({
       container: cn(
         "p-6 bg-[#f5f5f5] dark:bg-[rgb(33,33,33)] w-[calc(100vw-3rem)] sm:w-[30rem] max-h-[39rem] overflow-auto rounded-xl shadow-xl",
         styles?.container || "",
@@ -46,8 +45,9 @@ const LoginForm = ({ styles, authOptions }: LoginProps) => {
       text: cn("", styles?.text || ""),
       linkText: cn("text-[rgb(33,33,33)] dark:text-[#f5f5f5]", styles?.linkText || ""),
       message: cn("text-red-500", styles?.message || ""),
-    });
-  }, [styles]);
+    }),
+    [styles],
+  );
 
   const form = useForm({
     resolver: zodResolver(validation),

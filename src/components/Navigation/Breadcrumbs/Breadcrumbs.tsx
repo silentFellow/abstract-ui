@@ -1,8 +1,8 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-import React, { useState, useEffect, useMemo } from "react";
-import { BreadcrumbsProps, BreadcrumbsStyles } from "./Breadcrumbs.types";
+import React, { useMemo } from "react";
+import { BreadcrumbsProps } from "./Breadcrumbs.types";
 import {
   Breadcrumb,
   BreadcrumbEllipsis,
@@ -45,19 +45,14 @@ const renderDropdownMenuItems = (
 };
 
 const Breadcrumbs = ({ styles, separator, path }: BreadcrumbsProps) => {
-  const [style, setStyle] = useState<Required<BreadcrumbsStyles>>({
-    text: "",
-    active: "",
-    dropdown: "",
-  });
-
-  useEffect(() => {
-    setStyle({
+  const style = useMemo(
+    () => ({
       text: cn("", styles?.text || ""),
       active: cn("", styles?.active || ""),
       dropdown: cn("focus:outline-none", styles?.dropdown || ""),
-    });
-  }, [styles]);
+    }),
+    [styles],
+  );
 
   const keys = useMemo(() => Object.keys(path), [path]);
 

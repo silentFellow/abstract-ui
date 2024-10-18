@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useMemo } from "react";
 import { z } from "zod";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -16,7 +16,7 @@ import {
 } from "@/components/ui/form";
 import { useForm } from "react-hook-form";
 import { getSignUpValidation } from "./SignUpForm.validation";
-import type { SignUpProps, SignUpStyles } from "./SignUpForm.types";
+import type { SignUpProps } from "./SignUpForm.types";
 import { cn } from "@/lib/utils";
 
 const SignupForm = ({
@@ -26,11 +26,10 @@ const SignupForm = ({
   placeholder,
   withEmail = false,
 }: SignUpProps) => {
-  const [style, setStyle] = useState<SignUpStyles>({});
   const validation = getSignUpValidation(withEmail);
 
-  useEffect(() => {
-    setStyle({
+  const style = useMemo(
+    () => ({
       container: cn(
         "p-6 bg-[#f5f5f5] dark:bg-[rgb(33,33,33)] w-[calc(100vw-3rem)] sm:w-[30rem] max-h-[39rem] rounded-xl shadow-xl",
         styles?.container || "",
@@ -40,8 +39,9 @@ const SignupForm = ({
       text: cn("", styles?.text || ""),
       linkText: cn("text-[rgb(33,33,33)] dark:text-[#f5f5f5]", styles?.linkText || ""),
       message: cn("text-red-500", styles?.message || ""),
-    });
-  }, [styles]);
+    }),
+    [styles],
+  );
 
   const form = useForm({
     resolver: zodResolver(validation),

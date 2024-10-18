@@ -1,4 +1,4 @@
 import DropDown from "./DropDown";
-import { DropDownProps, DropDownStyles, DropDownOptions } from "./DropDown.types";
+import { DropDownProps, DropDownStyles } from "./DropDown.types";
 
-export { DropDown, DropDownStyles, DropDownProps, DropDownOptions };
+export { DropDown, DropDownStyles, DropDownProps };

@@ -1,19 +1,18 @@
 "use client";
 
-import { useState, useEffect, ChangeEvent, forwardRef } from "react";
+import { useState, ChangeEvent, forwardRef, useMemo } from "react";
 import { Input } from "@/components/ui/input";
-import type { ImageInputProps, ImageInputStyles } from "./ImageInput.types";
+import type { ImageInputProps } from "./ImageInput.types";
 import { cn } from "@/lib/utils";
 import { Profile } from "@/assets";
 import { Label } from "@/components/ui/label";
 
 const ImageInput = forwardRef<HTMLInputElement, ImageInputProps>(
   ({ styles, defaultImage = Profile, showInput = false, onChange, ...props }, ref) => {
-    const [style, setStyle] = useState<ImageInputStyles>({});
     const [image, setImage] = useState<string>("");
 
-    useEffect(() => {
-      setStyle({
+    const style = useMemo(
+      () => ({
         container: cn("flex items-center gap-2 p-2", styles?.container || ""),
         input: cn(
           `cursor-pointer border-none bg-transparent outline-none file:text-[rgb(33,33,33)] dark:file:text-[#f5f5f5] ${!showInput && "hidden"}`,
@@ -24,8 +23,9 @@ const ImageInput = forwardRef<HTMLInputElement, ImageInputProps>(
           "flex h-24 w-24 shadow-xl items-center justify-center rounded-full",
           styles?.imageContainer || "",
         ),
-      });
-    }, [styles, showInput]);
+      }),
+      [styles, showInput],
+    );
 
     const handleImageChange = (e: ChangeEvent<HTMLInputElement>) => {
       e.preventDefault();

@@ -1,6 +1,6 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { cn } from "@/lib/utils";
-import { ThemeSwitcherProps, ThemeSwitcherStyles } from "./ThemeSwitcher.types";
+import { ThemeSwitcherProps } from "./ThemeSwitcher.types";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { DesktopIcon, MoonIcon, SunIcon } from "@radix-ui/react-icons";
 
@@ -9,7 +9,15 @@ const ThemeSwitcher = ({
   showSystem = false,
   styles,
 }: ThemeSwitcherProps) => {
-  const [style, setStyle] = useState<ThemeSwitcherStyles>({});
+  const style = useMemo(
+    () => ({
+      container: cn("", styles?.container || ""),
+      tabs: cn("border w-fit h-fit", styles?.container || ""),
+      button: cn("", styles?.button),
+      icons: cn("h-[1.2rem] w-[1.2rem]", styles?.icons),
+    }),
+    [styles],
+  );
 
   const getSystemTheme = () => {
     if (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches) {
@@ -40,15 +48,6 @@ const ThemeSwitcher = ({
       localStorage.setItem("prefers-color-theme", theme);
     }
   }, [theme]);
-
-  useEffect(() => {
-    setStyle({
-      container: cn("", styles?.container || ""),
-      tabs: cn("border w-fit h-fit", styles?.container || ""),
-      button: cn("", styles?.button),
-      icons: cn("h-[1.2rem] w-[1.2rem]", styles?.icons),
-    });
-  }, [styles]);
 
   return (
     <Tabs defaultValue={theme} className={style.container}>
