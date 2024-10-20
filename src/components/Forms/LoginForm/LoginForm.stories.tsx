@@ -1,6 +1,5 @@
-import { useState } from "react";
-
 import LoginForm from "./LoginForm";
+import { LoginSubmit } from "./LoginForm.types";
 
 export default {
   title: "Login Form",
@@ -8,14 +7,15 @@ export default {
 };
 
 export const LoginFormWithCredentials = () => {
-  const [val, setVal] = useState({});
-  console.log(val);
+  const onSubmit = (value: LoginSubmit) => {
+    console.log(value);
+  };
 
   return (
     <LoginForm
       authOptions={{
         withEmail: true,
-        credentialsState: setVal,
+        onSubmit: onSubmit,
         signupRedirect: "/signup",
         forgetPasswordTrigger: () => console.log("forgot password"),
         social: [
@@ -76,13 +76,14 @@ export const LoginFormWithoutCredentials = () => {
 };
 
 export const LoginFormWithoutProviders = () => {
-  const [val, setVal] = useState({});
-  console.log(val);
+  const onSubmit = (value: LoginSubmit) => {
+    console.log(value);
+  };
 
   return (
     <LoginForm
       authOptions={{
-        credentialsState: setVal,
+        onSubmit: onSubmit,
         withEmail: true,
         signupRedirect: "/signup",
         forgetPasswordTrigger: () => console.log("forgot password"),
@@ -92,13 +93,14 @@ export const LoginFormWithoutProviders = () => {
 };
 
 export const LoginFormWithoutSignup = () => {
-  const [val, setVal] = useState({});
-  console.log(val);
+  const onSubmit = (value: LoginSubmit) => {
+    console.log(value);
+  };
 
   return (
     <LoginForm
       authOptions={{
-        credentialsState: setVal,
+        onSubmit: onSubmit,
         withEmail: true,
         forgetPasswordTrigger: () => console.log("forgot password"),
       }}
@@ -107,13 +109,14 @@ export const LoginFormWithoutSignup = () => {
 };
 
 export const LoginFormWithoutForgetPassword = () => {
-  const [val, setVal] = useState({});
-  console.log(val);
+  const onSubmit = (value: LoginSubmit) => {
+    console.log(value);
+  };
 
   return (
     <LoginForm
       authOptions={{
-        credentialsState: setVal,
+        onSubmit: onSubmit,
         withEmail: true,
         signupRedirect: "/signup",
       }}
@@ -122,13 +125,14 @@ export const LoginFormWithoutForgetPassword = () => {
 };
 
 export const LoginFormWithoutEmail = () => {
-  const [val, setVal] = useState({});
-  console.log(val);
+  const onSubmit = (value: LoginSubmit) => {
+    console.log(value);
+  };
 
   return (
     <LoginForm
       authOptions={{
-        credentialsState: setVal,
+        onSubmit: onSubmit,
         signupRedirect: "/signup",
         forgetPasswordTrigger: () => console.log("forgot password"),
       }}

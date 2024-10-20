@@ -26,8 +26,11 @@ export interface LoginProps {
     withEmail?: boolean;
     signupRedirect?: string;
     forgetPasswordTrigger?: (...args: unknown[]) => void;
-    credentialsState?: React.Dispatch<React.SetStateAction<Record<string, string>>>;
-    credentialsPlaceholder?: {
+
+    /** This is of type LoginSubmit */
+    onSubmit?: (values: { username: string; password: string }) => void;
+
+    placeholder?: {
       username?: string;
       password?: string;
     };
@@ -93,8 +96,11 @@ export type LoginAuthOptions = {
   withEmail?: boolean;
   signupRedirect?: string;
   forgetPasswordTrigger?: (...args: unknown[]) => void;
-  credentialsState?: React.Dispatch<React.SetStateAction<Record<string, string>>>;
-  credentialsPlaceholder?: {
+
+  /** This is of type LoginSubmit */
+  onSubmit?: (values: { username: string; password: string }) => void;
+
+  placeholder?: {
     username?: string;
     password?: string;
   };
@@ -151,4 +157,9 @@ export type LoginStyles = {
 export type LoginSocial = {
   provider: LoginProvider;
   trigger: (...args: unknown[]) => void;
+};
+
+export type LoginSubmit = {
+  username: string;
+  password: string;
 };

@@ -57,8 +57,8 @@ const LoginForm = ({ styles, authOptions }: LoginProps) => {
     },
   });
 
-  if (!authOptions.credentialsState && authOptions.social?.length === 0) return null;
-  if (!authOptions.credentialsState) {
+  if (!authOptions.onSubmit && authOptions.social?.length === 0) return null;
+  if (!authOptions.onSubmit) {
     return (
       <section className={`${style.container} ${style.text}`}>
         <div className="full flex flex-col gap-2 overflow-y-auto">
@@ -82,8 +82,8 @@ const LoginForm = ({ styles, authOptions }: LoginProps) => {
   }
 
   const onSubmit = (values: z.infer<typeof validation>) => {
-    if (authOptions.credentialsState) {
-      authOptions.credentialsState(values);
+    if (authOptions.onSubmit) {
+      authOptions.onSubmit(values);
     } else {
       throw new Error("credentialsState is not provided");
     }
@@ -104,7 +104,7 @@ const LoginForm = ({ styles, authOptions }: LoginProps) => {
                 <FormControl className={style.input}>
                   <Input
                     placeholder={
-                      authOptions.credentialsPlaceholder?.username ||
+                      authOptions.placeholder?.username ||
                       (authOptions.withEmail ? "Enter username or email..." : "Enter username...")
                     }
                     {...field}
@@ -123,9 +123,7 @@ const LoginForm = ({ styles, authOptions }: LoginProps) => {
                 <FormLabel>Password</FormLabel>
                 <FormControl className={style.input}>
                   <Input
-                    placeholder={
-                      authOptions.credentialsPlaceholder?.password || "Enter password..."
-                    }
+                    placeholder={authOptions.placeholder?.password || "Enter password..."}
                     {...field}
                   />
                 </FormControl>
