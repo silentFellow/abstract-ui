@@ -22,9 +22,9 @@ import { cn } from "@/lib/utils";
 const SignupForm = ({
   styles,
   signinRedirect,
-  credentialsState,
   placeholder,
   withEmail = false,
+  onSubmit,
 }: SignUpProps) => {
   const validation = getSignUpValidation(withEmail);
 
@@ -53,16 +53,19 @@ const SignupForm = ({
     },
   });
 
-  if (!credentialsState) return null;
+  if (!onSubmit) return null;
 
-  const onSubmit = (values: z.infer<typeof validation>) => credentialsState(values);
+  const handleSubmit = (values: z.infer<typeof validation>) => onSubmit(values);
 
   return (
     <section className={`${style.container} ${style.text}`}>
       <h3 className="font-extrabold uppercase my-3 text-center">sign-up</h3>
 
       <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)} className="flex flex-col justify-start gap-6">
+        <form
+          onSubmit={form.handleSubmit(handleSubmit)}
+          className="flex flex-col justify-start gap-6"
+        >
           <FormField
             control={form.control}
             name="username"

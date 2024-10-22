@@ -8,22 +8,19 @@ export default {
 };
 
 export const SignInWithEmail = () => {
-  const [val, setVal] = useState({});
-  console.log(val);
-
-  return <SignupForm withEmail={true} signinRedirect="/sign-in" credentialsState={setVal} />;
+  return (
+    <SignupForm
+      withEmail={true}
+      signinRedirect="/sign-in"
+      onSubmit={value => console.log(value)}
+    />
+  );
 };
 
 export const SignInWithoutEmail = () => {
-  const [val, setVal] = useState({});
-  console.log(val);
-
-  return <SignupForm signinRedirect="/sign-in" credentialsState={setVal} />;
+  return <SignupForm signinRedirect="/sign-in" onSubmit={value => console.log(value)} />;
 };
 
 export const SignInWithoutSignIn = () => {
-  const [val, setVal] = useState({});
-  console.log(val);
-
-  return <SignupForm credentialsState={setVal} />;
+  return <SignupForm onSubmit={value => console.log(value)} />;
 };

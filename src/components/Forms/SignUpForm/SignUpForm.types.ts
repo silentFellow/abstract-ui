@@ -1,6 +1,9 @@
 export interface SignUpProps {
   signinRedirect?: string;
-  credentialsState: React.Dispatch<React.SetStateAction<Record<string, string>>>;
+
+  /** This is of SidnUpSubmit */
+  onSubmit?: (values: { username: string; password: string; email?: string }) => void;
+
   withEmail?: boolean;
   placeholder?: {
     username?: string;
@@ -29,4 +32,10 @@ export type SignUpStyles = {
   text?: string;
   linkText?: string;
   message?: string;
+};
+
+export type SignUpSubmit = {
+  username: string;
+  password: string;
+  email?: string;
 };
