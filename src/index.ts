@@ -24,6 +24,7 @@ export * from "@/components/Forms/SignUpForm";
 export * from "@/components/Forms/LoginForm";
 
 export * from "@/components/Navigation/Breadcrumbs";
+export * from "@/components/Navigation/Pagination";
 
 // Restore console methods
 console.log = originalConsoleLog;
