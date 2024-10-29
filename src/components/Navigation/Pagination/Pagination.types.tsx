@@ -7,12 +7,12 @@ export interface PaginationProps {
   styles?: {
     container?: string;
     button?: string;
-    test?: string;
+    text?: string;
   };
 }
 
 export interface PaginationStyles {
   container?: string;
   button?: string;
-  test?: string;
+  text?: string;
 }

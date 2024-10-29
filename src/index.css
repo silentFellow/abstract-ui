@@ -89,6 +89,7 @@
 .no-focus {
   @apply focus-visible:ring-0 focus-visible:ring-transparent focus-visible:ring-offset-0 !important;
 }
+
 /* this snippet is from https://css-tricks.com/custom-scrollbars-in-webkit/ */
 /* Hide scrollbar for WebKit browsers */
 .hide-scrollbar::-webkit-scrollbar {

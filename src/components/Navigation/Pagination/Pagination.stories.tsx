@@ -21,7 +21,7 @@ export const CustomStyles = () => {
       path="#"
       styles={{
         button: "bg-[rgb(33,33,33)] text-white",
-        test: "text-red-700",
+        text: "text-red-700",
         container: "border border-black p-1 rounded-md opacity-90",
       }}
     />

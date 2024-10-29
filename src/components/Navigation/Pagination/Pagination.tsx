@@ -13,7 +13,7 @@ function Pagination({ pageNumber, hasNext, path, styles }: PaginationProps) {
         styles?.container || "",
       ),
       button: cn("", styles?.button || ""),
-      test: cn("", styles?.test || ""),
+      test: cn("", styles?.text || ""),
     }),
     [styles],
   );
@@ -35,7 +35,7 @@ function Pagination({ pageNumber, hasNext, path, styles }: PaginationProps) {
       >
         Prev
       </Button>
-      <span className={style.test} aria-live="polite">
+      <span className={style.text} aria-live="polite">
         {pageNumber}
       </span>
       <Button
