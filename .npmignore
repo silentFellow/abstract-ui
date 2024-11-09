@@ -1,0 +1,15 @@
+/.git
+/.husky
+/.storybook
+/dist
+/node_modules
+/scripts
+/.gitignore
+/.prettierrc
+/components.json
+/eslint.config.js
+/pnpm-lock.yaml
+/postcss.config.js
+/tailwind.config.js
+/tsconfig.json
+/tsup.config.js
