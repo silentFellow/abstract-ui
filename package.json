@@ -45,6 +45,7 @@
   ],
   "author": "silentFellow",
   "license": "ISC",
+  "homepage": "https://github.com/silentFellow/abstract-ui#readme",
   "devDependencies": {
     "@chromatic-com/storybook": "^1.9.0",
     "@eslint/js": "^9.12.0",
